@@ -1,6 +1,0 @@
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.csproj.AssemblyReference.cache
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.AssemblyInfoInputs.cache
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.AssemblyInfo.cs
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.csproj.CoreCompileInputs.cache
-C:\Users\dell\Desktop\PizzaAppTask3\PizzaAppTask3\PizzaAppAPI\obj\Debug\net5.0\PizzaAppAPI.MvcApplicationPartsAssemblyInfo.cache
