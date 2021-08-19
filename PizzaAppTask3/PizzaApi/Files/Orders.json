@@ -32,4 +32,38 @@
       }
     }
   ]
+}{
+  "TotalPrice": 95.8,
+  "NumOfPizzas": 2,
+  "UserId": 2,
+  "ListOfPizzas": [
+    {
+      "Topping": {
+        "Type": "Meat",
+        "Price": 17.5
+      },
+      "Size": {
+        "Type": "Salad",
+        "Price": 9.8
+      },
+      "Side": {
+        "Type": "Small",
+        "Price": 10
+      }
+    },
+    {
+      "Topping": {
+        "Type": "Shrimps",
+        "Price": 30
+      },
+      "Size": {
+        "Type": "Cookie",
+        "Price": 3.5
+      },
+      "Side": {
+        "Type": "Small",
+        "Price": 10
+      }
+    }
+  ]
 }
