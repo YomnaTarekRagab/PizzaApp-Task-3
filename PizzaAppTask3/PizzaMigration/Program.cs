@@ -1,62 +1,69 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using FluentMigrator.Runner;
-using FluentMigrator.Runner.Initialization;
-
+﻿using FluentMigrator.Runner;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.IO;
+using PizzaMigration.Migrations;
 
-namespace test
+namespace PizzaMigration
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var serviceProvider = CreateServices();
+            Console.WriteLine("Enter your command:");
+            var option = Console.ReadLine();
+            Console.WriteLine("Command Read:" + option);
+            if (option!=null)
+            { 
+                var commandStringArr = option.Split(" ");
+                var upOrDown = commandStringArr[0];
+                Console.WriteLine("up or down stored");
+                var serviceProvider = CreateServices();
+                using (var scope = serviceProvider.CreateScope())
+                {
+                    if (upOrDown.Equals("--up"))
+                    {
+                        Console.WriteLine("updating the database");
+                        UpdateDatabase(scope.ServiceProvider);
+                    }
 
-            // Put the database update into a scope to ensure
-            // that all resources will be disposed.
-            using (var scope = serviceProvider.CreateScope())
-            {
-                UpdateDatabase(scope.ServiceProvider);
+                    else if (upOrDown.Equals("--down"))
+                    {
+                        Console.WriteLine("Rollbacking the database");
+                        var downVersion = Convert.ToInt32(commandStringArr[1]);
+                        if (downVersion > -1)
+                            RollbackDatabase(scope.ServiceProvider, downVersion);
+                    }
+                }
             }
         }
 
-        /// <summary>
-        /// Configure the dependency injection services
-        /// </summary>
         private static IServiceProvider CreateServices()
         {
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = builder.Build();
+            var configString = configuration["ConnectionString"];
+
             return new ServiceCollection()
-                // Add common FluentMigrator services
                 .AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
-                    // Add SQLite support to FluentMigrator
                     .AddPostgres()
-                    // Set the connection string
-                    .WithGlobalConnectionString("Server=127.0.0.1;Database=PizzaApp;Port=5432;User Id=postgres;Password=root;")
-                    // Define the assembly containing the migrations
-                    .ScanIn(Assembly.GetExecutingAssembly()).For.All())
-                // Enable logging to console in the FluentMigrator way
+                    .WithGlobalConnectionString(configString)
+                    .ScanIn(typeof(_001_PizzaToppings).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
-                // Build the service provider
                 .BuildServiceProvider(false);
         }
 
-        /// <summary>
-        /// Update the database
-        /// </summary>
         private static void UpdateDatabase(IServiceProvider serviceProvider)
         {
-            // Instantiate the runner
             var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
-
-            // Execute the migrations
             runner.MigrateUp();
         }
 
-        /// Rollback the database
-        /// </summary>
         private static void RollbackDatabase(IServiceProvider serviceProvider, long rollbackVersion)
         {
             var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
