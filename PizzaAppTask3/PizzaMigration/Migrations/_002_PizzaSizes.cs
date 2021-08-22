@@ -7,14 +7,14 @@ using FluentMigrator;
 
 namespace PizzaMigration.Migrations
 {
-    [Migration(2)]
+    [Migration(002)]
     public class _002_PizzaSizes : AutoReversingMigration
     {
         public override void Up()
         {
-            Create.Table("PizzaSizes")
+            Create.Table("pizza_sizes")
                             .WithIdColumn()
-                            .WithNameColumn("Sizes")
+                            .WithNameColumn("sizes")
                             .WithPriceColumn();
         }
     }
