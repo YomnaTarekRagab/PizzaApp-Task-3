@@ -27,6 +27,7 @@ namespace PizzaMigration
             return tableWithColumnSyntax
                 .WithColumn(tableName)
                 .AsString()
+                .Unique()
                 .NotNullable();
         }
 
@@ -34,8 +35,17 @@ namespace PizzaMigration
             WithPriceColumn(this ICreateTableWithColumnSyntax tableWithColumnSyntax)
         {
             return tableWithColumnSyntax
-                .WithColumn("Price")
+                .WithColumn("price")
                 .AsDouble()
+                .NotNullable();
+        }
+
+        public static ICreateTableColumnOptionOrWithColumnSyntax
+           WithTimeStampsColumn(this ICreateTableWithColumnSyntax tableWithColumnSyntax)
+        {
+            return tableWithColumnSyntax
+                .WithColumn("created_at")
+                .AsDateTime()
                 .NotNullable();
         }
 
