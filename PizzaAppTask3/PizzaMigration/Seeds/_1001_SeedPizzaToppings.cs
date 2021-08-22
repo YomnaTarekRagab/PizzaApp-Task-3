@@ -1,4 +1,5 @@
 ﻿using FluentMigrator;
+using System.Collections.Generic;
 
 namespace PizzaMigration.Seeds
 {
@@ -9,7 +10,7 @@ namespace PizzaMigration.Seeds
     }
 
     [Migration(1001)]
-    public class _1001_SeedPizzaToppings : FluentMigrator.Migration
+    public class _1001_SeedPizzaToppings : AutoReversingMigration
     {
         public static List<PizzaToppings> PizzaTopping = new()
         {
@@ -24,11 +25,11 @@ namespace PizzaMigration.Seeds
         {
             foreach(var topping in PizzaTopping)
             {
-                Insert.IntoTable(Tables.PizzaToppings).Row(
+                Insert.IntoTable("pizza_toppings").Row(
                     new
                     {
-                        Toppings = topping.Name,
-                        Price = topping.Price
+                        toppings = topping.Name,
+                        price = topping.Price
                     });
             }
         }
