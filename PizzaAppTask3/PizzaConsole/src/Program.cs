@@ -32,7 +32,7 @@ namespace PizzaApp
                     string components = await htppClient.GetStringAsync(baseUrl + "components");
                     var pizzaMenu = System.Text.Json.JsonSerializer.Deserialize<PizzaModel>(components);
                     TypeXPrice prefTop = null, prefSize = null, prefSide = null;
-                    (prefTop, prefSide, prefSize) = ConsoleFn(pizzaMenu);
+                    (prefTop, prefSize, prefSide) = ConsoleFn(pizzaMenu);
                     var pizza = new Pizza
                     {
                         Topping = prefTop,
@@ -72,12 +72,13 @@ namespace PizzaApp
         {
             TypeXPrice prefTop = null, prefSize = null, prefSide = null;
             string formatTitle = "[bold green] Available toppings[/] \n";
-            List<String> columnNames = new List<string> { "Toppings", "Prices" };
+            List<String> columnNames = new List<string> { "Id", "Toppings", "Prices" };
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Toppings);
             AnsiConsole.Render(new Markup("[bold yellow] Your preferred topping from the topping list:[/] \n"));
             prefTop = Menu.InputCheck(pizzaMenu.Toppings, "topping");
             formatTitle = "[bold green] Available sizes[/] \n";
             columnNames.Clear();
+            columnNames.Add("Id");
             columnNames.Add("Sizes");
             columnNames.Add("Prices");
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Sizes);
@@ -85,6 +86,7 @@ namespace PizzaApp
             prefSize = Menu.InputCheck(pizzaMenu.Sizes);
             formatTitle = "[bold green] Available sides[/] \n";
             columnNames.Clear();
+            columnNames.Add("Id");
             columnNames.Add("Sides");
             columnNames.Add("Prices");
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Sides);

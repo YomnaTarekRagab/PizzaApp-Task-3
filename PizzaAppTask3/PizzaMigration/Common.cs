@@ -40,14 +40,14 @@ namespace PizzaMigration
                 .NotNullable();
         }
 
-        public static ICreateTableColumnOptionOrWithColumnSyntax
-           WithTimeStampsColumn(this ICreateTableWithColumnSyntax tableWithColumnSyntax)
-        {
-            return tableWithColumnSyntax
-                .WithColumn("created_at")
-                .AsDateTime()
-                .NotNullable();
-        }
+        //public static ICreateTableColumnOptionOrWithColumnSyntax
+        //   WithTimeStampsColumn(this ICreateTableWithColumnSyntax tableWithColumnSyntax)
+        //{
+        //    return tableWithColumnSyntax
+        //        .WithColumn("created_at")
+        //        .AsDateTime()
+        //        .NotNullable();
+        //}
 
     }
 }
