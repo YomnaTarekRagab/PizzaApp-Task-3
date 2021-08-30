@@ -30,9 +30,13 @@ namespace PizzaApp
                     AnsiConsole.Render(new Markup($"[bold red] This is order number {counter} from your {numberOfPizzas} orders:[/] \n"));
                     //--API Call for the menu
                     string components = await htppClient.GetStringAsync(baseUrl + "components");
-                    var pizzaMenu = System.Text.Json.JsonSerializer.Deserialize<PizzaModel>(components);
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    var pizzaMenu = System.Text.Json.JsonSerializer.Deserialize<PizzaModel>(components, options);
                     TypeXPrice prefTop = null, prefSize = null, prefSide = null;
-                    (prefTop, prefSide, prefSize) = ConsoleFn(pizzaMenu);
+                    (prefTop, prefSize, prefSide) = ConsoleFn(pizzaMenu);
                     var pizza = new Pizza
                     {
                         Topping = prefTop,
@@ -72,7 +76,7 @@ namespace PizzaApp
         {
             TypeXPrice prefTop = null, prefSize = null, prefSide = null;
             string formatTitle = "[bold green] Available toppings[/] \n";
-            List<String> columnNames = new List<string> { "Toppings", "Prices" };
+            List<String> columnNames = new List<string> {"Toppings", "Prices" };
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Toppings);
             AnsiConsole.Render(new Markup("[bold yellow] Your preferred topping from the topping list:[/] \n"));
             prefTop = Menu.InputCheck(pizzaMenu.Toppings, "topping");
