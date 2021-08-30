@@ -30,7 +30,11 @@ namespace PizzaApp
                     AnsiConsole.Render(new Markup($"[bold red] This is order number {counter} from your {numberOfPizzas} orders:[/] \n"));
                     //--API Call for the menu
                     string components = await htppClient.GetStringAsync(baseUrl + "components");
-                    var pizzaMenu = System.Text.Json.JsonSerializer.Deserialize<PizzaModel>(components);
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    var pizzaMenu = System.Text.Json.JsonSerializer.Deserialize<PizzaModel>(components, options);
                     TypeXPrice prefTop = null, prefSize = null, prefSide = null;
                     (prefTop, prefSize, prefSide) = ConsoleFn(pizzaMenu);
                     var pizza = new Pizza
@@ -72,13 +76,12 @@ namespace PizzaApp
         {
             TypeXPrice prefTop = null, prefSize = null, prefSide = null;
             string formatTitle = "[bold green] Available toppings[/] \n";
-            List<String> columnNames = new List<string> { "Id", "Toppings", "Prices" };
+            List<String> columnNames = new List<string> {"Toppings", "Prices" };
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Toppings);
             AnsiConsole.Render(new Markup("[bold yellow] Your preferred topping from the topping list:[/] \n"));
             prefTop = Menu.InputCheck(pizzaMenu.Toppings, "topping");
             formatTitle = "[bold green] Available sizes[/] \n";
             columnNames.Clear();
-            columnNames.Add("Id");
             columnNames.Add("Sizes");
             columnNames.Add("Prices");
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Sizes);
@@ -86,7 +89,6 @@ namespace PizzaApp
             prefSize = Menu.InputCheck(pizzaMenu.Sizes);
             formatTitle = "[bold green] Available sides[/] \n";
             columnNames.Clear();
-            columnNames.Add("Id");
             columnNames.Add("Sides");
             columnNames.Add("Prices");
             Menu.PrintMenu(formatTitle, columnNames, pizzaMenu.Sides);

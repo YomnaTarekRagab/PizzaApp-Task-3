@@ -14,10 +14,10 @@ namespace PizzaMigration.Migrations
         {
             Create.Table("pizzas_list")
                             .WithIdColumn().Indexed()
-                            .WithColumn("orders_id").AsInt32().NotNullable().ForeignKey("orders_list", "id").PrimaryKey()
-                            .WithNameColumn("topping").ForeignKey("pizza_toppings", "toppings")
-                            .WithNameColumn("size").ForeignKey("pizza_sizes", "sizes")
-                            .WithNameColumn("side").ForeignKey("pizza_sides", "sides")
+                            .WithColumn("order_id").AsInt32().NotNullable().ForeignKey("orders_list", "id").PrimaryKey()
+                            .WithColumn("topping").AsString().NotNullable().ForeignKey("pizza_toppings", "type")
+                            .WithColumn("size").AsString().NotNullable().ForeignKey("pizza_sizes", "type")
+                            .WithColumn("side").AsString().NotNullable().ForeignKey("pizza_sides", "type")
                             .WithColumn("price_per_pizza").AsDouble().NotNullable();
         }
     }

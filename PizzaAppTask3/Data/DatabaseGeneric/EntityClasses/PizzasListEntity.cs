@@ -48,7 +48,7 @@ namespace PizzaAppData.EntityClasses
 			public PizzasListEntityStaticMetaData()
 			{
 				SetEntityCoreInfo("PizzasListEntity", InheritanceHierarchyType.None, false, (int)PizzaAppData.EntityType.PizzasListEntity, typeof(PizzasListEntity), typeof(PizzasListEntityFactory), false);
-				AddNavigatorMetaData<PizzasListEntity, OrdersListEntity>("OrdersList", "PizzasLists", (a, b) => a._ordersList = b, a => a._ordersList, (a, b) => a.OrdersList = b, PizzaAppData.RelationClasses.StaticPizzasListRelations.OrdersListEntityUsingOrdersIdStatic, ()=>new PizzasListRelations().OrdersListEntityUsingOrdersId, null, new int[] { (int)PizzasListFieldIndex.OrdersId }, null, true, (int)PizzaAppData.EntityType.OrdersListEntity);
+				AddNavigatorMetaData<PizzasListEntity, OrdersListEntity>("OrdersList", "PizzasLists", (a, b) => a._ordersList = b, a => a._ordersList, (a, b) => a.OrdersList = b, PizzaAppData.RelationClasses.StaticPizzasListRelations.OrdersListEntityUsingOrderIdStatic, ()=>new PizzasListRelations().OrdersListEntityUsingOrderId, null, new int[] { (int)PizzasListFieldIndex.OrderId }, null, true, (int)PizzaAppData.EntityType.OrdersListEntity);
 			}
 		}
 
@@ -79,20 +79,20 @@ namespace PizzaAppData.EntityClasses
 
 		/// <summary> CTor</summary>
 		/// <param name="id">PK value for PizzasList which data should be fetched into this PizzasList object</param>
-		/// <param name="ordersId">PK value for PizzasList which data should be fetched into this PizzasList object</param>
-		public PizzasListEntity(System.Int32 id, System.Int32 ordersId) : this(id, ordersId, null)
+		/// <param name="orderId">PK value for PizzasList which data should be fetched into this PizzasList object</param>
+		public PizzasListEntity(System.Int32 id, System.Int32 orderId) : this(id, orderId, null)
 		{
 		}
 
 		/// <summary> CTor</summary>
 		/// <param name="id">PK value for PizzasList which data should be fetched into this PizzasList object</param>
-		/// <param name="ordersId">PK value for PizzasList which data should be fetched into this PizzasList object</param>
+		/// <param name="orderId">PK value for PizzasList which data should be fetched into this PizzasList object</param>
 		/// <param name="validator">The custom validator object for this PizzasListEntity</param>
-		public PizzasListEntity(System.Int32 id, System.Int32 ordersId, IValidator validator)
+		public PizzasListEntity(System.Int32 id, System.Int32 orderId, IValidator validator)
 		{
 			InitClassEmpty(validator, null);
 			this.Id = id;
-			this.OrdersId = ordersId;
+			this.OrderId = orderId;
 		}
 
 		/// <summary>Private CTor for deserialization</summary>
@@ -151,12 +151,12 @@ namespace PizzaAppData.EntityClasses
 			get { return (System.Int32)GetValue((int)PizzasListFieldIndex.Id, true); }
 			set { SetValue((int)PizzasListFieldIndex.Id, value); }		}
 
-		/// <summary>The OrdersId property of the Entity PizzasList<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "pizzas_list"."orders_id".<br/>Table field type characteristics (type, precision, scale, length): Integer, 10, 0, 0.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, true, false</remarks>
-		public virtual System.Int32 OrdersId
+		/// <summary>The OrderId property of the Entity PizzasList<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "pizzas_list"."order_id".<br/>Table field type characteristics (type, precision, scale, length): Integer, 10, 0, 0.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, true, false</remarks>
+		public virtual System.Int32 OrderId
 		{
-			get { return (System.Int32)GetValue((int)PizzasListFieldIndex.OrdersId, true); }
-			set	{ SetValue((int)PizzasListFieldIndex.OrdersId, value); }
+			get { return (System.Int32)GetValue((int)PizzasListFieldIndex.OrderId, true); }
+			set	{ SetValue((int)PizzasListFieldIndex.OrderId, value); }
 		}
 
 		/// <summary>The PricePerPizza property of the Entity PizzasList<br/><br/></summary>
@@ -211,8 +211,8 @@ namespace PizzaAppData
 	{
 		///<summary>Id. </summary>
 		Id,
-		///<summary>OrdersId. </summary>
-		OrdersId,
+		///<summary>OrderId. </summary>
+		OrderId,
 		///<summary>PricePerPizza. </summary>
 		PricePerPizza,
 		///<summary>Side. </summary>
@@ -232,10 +232,10 @@ namespace PizzaAppData.RelationClasses
 	public partial class PizzasListRelations: RelationFactory
 	{
 
-		/// <summary>Returns a new IEntityRelation object, between PizzasListEntity and OrdersListEntity over the m:1 relation they have, using the relation between the fields: PizzasList.OrdersId - OrdersList.Id</summary>
-		public virtual IEntityRelation OrdersListEntityUsingOrdersId
+		/// <summary>Returns a new IEntityRelation object, between PizzasListEntity and OrdersListEntity over the m:1 relation they have, using the relation between the fields: PizzasList.OrderId - OrdersList.Id</summary>
+		public virtual IEntityRelation OrdersListEntityUsingOrderId
 		{
-			get	{ return ModelInfoProviderSingleton.GetInstance().CreateRelation(RelationType.ManyToOne, "OrdersList", false, new[] { OrdersListFields.Id, PizzasListFields.OrdersId }); }
+			get	{ return ModelInfoProviderSingleton.GetInstance().CreateRelation(RelationType.ManyToOne, "OrdersList", false, new[] { OrdersListFields.Id, PizzasListFields.OrderId }); }
 		}
 
 	}
@@ -243,7 +243,7 @@ namespace PizzaAppData.RelationClasses
 	/// <summary>Static class which is used for providing relationship instances which are re-used internally for syncing</summary>
 	internal static class StaticPizzasListRelations
 	{
-		internal static readonly IEntityRelation OrdersListEntityUsingOrdersIdStatic = new PizzasListRelations().OrdersListEntityUsingOrdersId;
+		internal static readonly IEntityRelation OrdersListEntityUsingOrderIdStatic = new PizzasListRelations().OrdersListEntityUsingOrderId;
 
 		/// <summary>CTor</summary>
 		static StaticPizzasListRelations() { }

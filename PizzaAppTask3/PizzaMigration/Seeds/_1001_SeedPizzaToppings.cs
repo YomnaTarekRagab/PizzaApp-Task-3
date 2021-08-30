@@ -5,7 +5,7 @@ namespace PizzaMigration.Seeds
 {
     public class PizzaToppings
     {
-        public string Name { get; set; }
+        public string Type { get; set; }
         public double Price { get; set; }
     }
 
@@ -14,21 +14,21 @@ namespace PizzaMigration.Seeds
     {
         public static List<PizzaToppings> PizzaTopping = new()
         {
-            new() { Name = "Chicken BBQ", Price = 15 },
-            new() { Name = "Shrimps", Price = 30 },
-            new() { Name = "Pepperoni", Price = 12.5 },
-            new() { Name = "Vegetables", Price = 8.4 },
-            new() { Name = "Meat", Price = 17.5 },
+            new() { Type = "Chicken BBQ", Price = 15 },
+            new() { Type = "Shrimps", Price = 30 },
+            new() { Type = "Pepperoni", Price = 12.5 },
+            new() { Type = "Vegetables", Price = 8.4 },
+            new() { Type = "Meat", Price = 17.5 },
         };
 
         public override void Up()
         {
-            foreach(var topping in PizzaTopping)
+            foreach (var topping in PizzaTopping)
             {
                 Insert.IntoTable("pizza_toppings").Row(
                     new
                     {
-                        toppings = topping.Name,
+                        type = topping.Type,
                         price = topping.Price
                     });
             }

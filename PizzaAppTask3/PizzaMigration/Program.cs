@@ -13,12 +13,10 @@ namespace PizzaMigration
         {
             Console.WriteLine("Enter your command:");
             var option = Console.ReadLine();
-            Console.WriteLine("Command Read:" + option);
-            if (option!=null)
+            if (option != null)
             { 
                 var commandStringArr = option.Split(" ");
                 var upOrDown = commandStringArr[0];
-                Console.WriteLine("up or down stored");
                 var serviceProvider = CreateServices();
                 using (var scope = serviceProvider.CreateScope())
                 {
@@ -44,10 +42,8 @@ namespace PizzaMigration
             var builder = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
             IConfigurationRoot configuration = builder.Build();
             var configString = configuration["ConnectionString"];
-
             return new ServiceCollection()
                 .AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb

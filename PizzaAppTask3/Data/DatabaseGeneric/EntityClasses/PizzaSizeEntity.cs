@@ -144,12 +144,12 @@ namespace PizzaAppData.EntityClasses
 			set	{ SetValue((int)PizzaSizeFieldIndex.Price, value); }
 		}
 
-		/// <summary>The Sizes property of the Entity PizzaSize<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "pizza_sizes"."sizes".<br/>Table field type characteristics (type, precision, scale, length): Text, 0, 0, 1073741824.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		public virtual System.String Sizes
+		/// <summary>The Type property of the Entity PizzaSize<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "pizza_sizes"."type".<br/>Table field type characteristics (type, precision, scale, length): Text, 0, 0, 1073741824.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		public virtual System.String Type
 		{
-			get { return (System.String)GetValue((int)PizzaSizeFieldIndex.Sizes, true); }
-			set	{ SetValue((int)PizzaSizeFieldIndex.Sizes, value); }
+			get { return (System.String)GetValue((int)PizzaSizeFieldIndex.Type, true); }
+			set	{ SetValue((int)PizzaSizeFieldIndex.Type, value); }
 		}
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
@@ -166,8 +166,8 @@ namespace PizzaAppData
 		Id,
 		///<summary>Price. </summary>
 		Price,
-		///<summary>Sizes. </summary>
-		Sizes,
+		///<summary>Type. </summary>
+		Type,
 		/// <summary></summary>
 		AmountOfFields
 	}

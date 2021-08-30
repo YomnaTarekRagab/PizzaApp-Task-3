@@ -1,7 +1,5 @@
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\appsettings.json
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\Files\Orders.json
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\Files\PizzaMenu.json
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaApi.exe
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaApi.deps.json
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaApi.runtimeconfig.json
@@ -15,15 +13,11 @@ C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\Np
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\SD.LLBLGen.Pro.DQE.Access.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\SD.LLBLGen.Pro.DQE.PostgreSql.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\SD.LLBLGen.Pro.ORMSupportClasses.dll
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrdersView.dll
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrdersView.Persistence.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaAppData.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaAppDataDBSpecific.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaAppData.pdb
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaAppDataDBSpecific.pdb
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\PizzaAppDataDBSpecific.dll.config
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrdersView.Persistence.pdb
-C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrdersView.pdb
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\PizzaApi.csproj.AssemblyReference.cache
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\PizzaApi.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\PizzaApi.AssemblyInfoInputs.cache
@@ -37,3 +31,7 @@ C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\Pi
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\ref\PizzaApi.dll
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\PizzaApi.pdb
 C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\obj\Debug\net6.0\PizzaApi.genruntimeconfig.cache
+C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrderView.dll
+C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrderView.Persistence.dll
+C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrderView.pdb
+C:\Users\dell\Desktop\PizzaApp-Task-3\PizzaAppTask3\PizzaApi\bin\Debug\net6.0\OrderView.Persistence.pdb

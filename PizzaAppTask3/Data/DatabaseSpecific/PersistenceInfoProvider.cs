@@ -58,7 +58,7 @@ namespace PizzaAppData.DatabaseSpecific
 			this.AddElementMapping("PizzaSideEntity", @"pizza_app", @"public", "pizza_sides", 3, 0);
 			this.AddElementFieldMapping("PizzaSideEntity", "Id", "id", false, "Integer", 0, 10, 0, true, "public.pizza_sides_id_seq", null, typeof(System.Int32), 0);
 			this.AddElementFieldMapping("PizzaSideEntity", "Price", "price", false, "Double", 0, 38, 0, false, "", null, typeof(System.Double), 1);
-			this.AddElementFieldMapping("PizzaSideEntity", "Sides", "sides", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
+			this.AddElementFieldMapping("PizzaSideEntity", "Type", "type", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
 		}
 
 		/// <summary>Inits PizzaSizeEntity's mappings</summary>
@@ -67,7 +67,7 @@ namespace PizzaAppData.DatabaseSpecific
 			this.AddElementMapping("PizzaSizeEntity", @"pizza_app", @"public", "pizza_sizes", 3, 0);
 			this.AddElementFieldMapping("PizzaSizeEntity", "Id", "id", false, "Integer", 0, 10, 0, true, "public.pizza_sizes_id_seq", null, typeof(System.Int32), 0);
 			this.AddElementFieldMapping("PizzaSizeEntity", "Price", "price", false, "Double", 0, 38, 0, false, "", null, typeof(System.Double), 1);
-			this.AddElementFieldMapping("PizzaSizeEntity", "Sizes", "sizes", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
+			this.AddElementFieldMapping("PizzaSizeEntity", "Type", "type", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
 		}
 
 		/// <summary>Inits PizzasListEntity's mappings</summary>
@@ -75,7 +75,7 @@ namespace PizzaAppData.DatabaseSpecific
 		{
 			this.AddElementMapping("PizzasListEntity", @"pizza_app", @"public", "pizzas_list", 6, 0);
 			this.AddElementFieldMapping("PizzasListEntity", "Id", "id", false, "Integer", 0, 10, 0, true, "public.pizzas_list_id_seq", null, typeof(System.Int32), 0);
-			this.AddElementFieldMapping("PizzasListEntity", "OrdersId", "orders_id", false, "Integer", 0, 10, 0, false, "", null, typeof(System.Int32), 1);
+			this.AddElementFieldMapping("PizzasListEntity", "OrderId", "order_id", false, "Integer", 0, 10, 0, false, "", null, typeof(System.Int32), 1);
 			this.AddElementFieldMapping("PizzasListEntity", "PricePerPizza", "price_per_pizza", false, "Double", 0, 38, 0, false, "", null, typeof(System.Double), 2);
 			this.AddElementFieldMapping("PizzasListEntity", "Side", "side", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 3);
 			this.AddElementFieldMapping("PizzasListEntity", "Size", "size", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 4);
@@ -88,7 +88,7 @@ namespace PizzaAppData.DatabaseSpecific
 			this.AddElementMapping("PizzaToppingEntity", @"pizza_app", @"public", "pizza_toppings", 3, 0);
 			this.AddElementFieldMapping("PizzaToppingEntity", "Id", "id", false, "Integer", 0, 10, 0, true, "public.pizza_toppings_id_seq", null, typeof(System.Int32), 0);
 			this.AddElementFieldMapping("PizzaToppingEntity", "Price", "price", false, "Double", 0, 38, 0, false, "", null, typeof(System.Double), 1);
-			this.AddElementFieldMapping("PizzaToppingEntity", "Toppings", "toppings", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
+			this.AddElementFieldMapping("PizzaToppingEntity", "Type", "type", false, "Text", 1073741824, 0, 0, false, "", null, typeof(System.String), 2);
 		}
 
 	}

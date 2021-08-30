@@ -8,13 +8,13 @@ using FluentMigrator;
 namespace PizzaMigration.Migrations
 {
     [Migration(001)]
-    public class _001_PizzaToppings: AutoReversingMigration 
+    public class _001_PizzaToppings : AutoReversingMigration 
     {
         public override void Up()
         {
             Create.Table("pizza_toppings")
                             .WithIdColumn()
-                            .WithNameColumn("toppings")
+                            .WithNameColumn("type")
                             .WithPriceColumn();
         }
     }

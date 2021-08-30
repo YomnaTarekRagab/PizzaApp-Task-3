@@ -28,7 +28,7 @@ namespace PizzaMigration.Seeds
                 Insert.IntoTable("pizza_sides").Row(
                     new
                     {
-                        sides = side.Type,
+                        type = side.Type,
                         price = side.Price
                     });
             }

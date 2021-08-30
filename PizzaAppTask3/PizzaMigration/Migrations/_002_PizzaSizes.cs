@@ -14,7 +14,7 @@ namespace PizzaMigration.Migrations
         {
             Create.Table("pizza_sizes")
                             .WithIdColumn()
-                            .WithNameColumn("sizes")
+                            .WithNameColumn("type")
                             .WithPriceColumn();
         }
     }

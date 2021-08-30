@@ -144,12 +144,12 @@ namespace PizzaAppData.EntityClasses
 			set	{ SetValue((int)PizzaSideFieldIndex.Price, value); }
 		}
 
-		/// <summary>The Sides property of the Entity PizzaSide<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "pizza_sides"."sides".<br/>Table field type characteristics (type, precision, scale, length): Text, 0, 0, 1073741824.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		public virtual System.String Sides
+		/// <summary>The Type property of the Entity PizzaSide<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "pizza_sides"."type".<br/>Table field type characteristics (type, precision, scale, length): Text, 0, 0, 1073741824.<br/>Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		public virtual System.String Type
 		{
-			get { return (System.String)GetValue((int)PizzaSideFieldIndex.Sides, true); }
-			set	{ SetValue((int)PizzaSideFieldIndex.Sides, value); }
+			get { return (System.String)GetValue((int)PizzaSideFieldIndex.Type, true); }
+			set	{ SetValue((int)PizzaSideFieldIndex.Type, value); }
 		}
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
@@ -166,8 +166,8 @@ namespace PizzaAppData
 		Id,
 		///<summary>Price. </summary>
 		Price,
-		///<summary>Sides. </summary>
-		Sides,
+		///<summary>Type. </summary>
+		Type,
 		/// <summary></summary>
 		AmountOfFields
 	}

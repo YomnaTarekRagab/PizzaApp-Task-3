@@ -421,32 +421,32 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "OrdersView/1.0.0": {
+      "OrderView/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "System.Runtime.Serialization.Primitives": "4.3.0"
         },
         "compile": {
-          "bin/placeholder/OrdersView.dll": {}
+          "bin/placeholder/OrderView.dll": {}
         },
         "runtime": {
-          "bin/placeholder/OrdersView.dll": {}
+          "bin/placeholder/OrderView.dll": {}
         }
       },
-      "OrdersView.Persistence/1.0.0": {
+      "OrderView.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "OrdersView": "1.0.0",
+          "OrderView": "1.0.0",
           "PizzaAppData": "1.0.0",
           "System.Linq.Queryable": "4.3.0"
         },
         "compile": {
-          "bin/placeholder/OrdersView.Persistence.dll": {}
+          "bin/placeholder/OrderView.Persistence.dll": {}
         },
         "runtime": {
-          "bin/placeholder/OrdersView.Persistence.dll": {}
+          "bin/placeholder/OrderView.Persistence.dll": {}
         }
       },
       "PizzaAppData/1.0.0": {
@@ -2112,15 +2112,15 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "OrdersView/1.0.0": {
+    "OrderView/1.0.0": {
       "type": "project",
-      "path": "../Data/OrdersView/OrdersView.csproj",
-      "msbuildProject": "../Data/OrdersView/OrdersView.csproj"
+      "path": "../Data/OrderView/OrderView.csproj",
+      "msbuildProject": "../Data/OrderView/OrderView.csproj"
     },
-    "OrdersView.Persistence/1.0.0": {
+    "OrderView.Persistence/1.0.0": {
       "type": "project",
-      "path": "../Data/OrdersView.Persistence/OrdersView.Persistence.csproj",
-      "msbuildProject": "../Data/OrdersView.Persistence/OrdersView.Persistence.csproj"
+      "path": "../Data/OrderView.Persistence/OrderView.Persistence.csproj",
+      "msbuildProject": "../Data/OrderView.Persistence/OrderView.Persistence.csproj"
     },
     "PizzaAppData/1.0.0": {
       "type": "project",
@@ -2137,8 +2137,8 @@
     "net6.0": [
       "Npgsql >= 5.0.7",
       "Npgsql.NetTopologySuite >= 5.0.7",
-      "OrdersView >= 1.0.0",
-      "OrdersView.Persistence >= 1.0.0",
+      "OrderView >= 1.0.0",
+      "OrderView.Persistence >= 1.0.0",
       "PizzaAppData >= 1.0.0",
       "PizzaAppDataDBSpecific >= 1.0.0",
       "SD.LLBLGen.Pro.DQE.Access >= 5.8.2",
@@ -2184,11 +2184,11 @@
             "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\DatabaseSpecific\\PizzaAppDataDBSpecific.csproj": {
               "projectPath": "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\DatabaseSpecific\\PizzaAppDataDBSpecific.csproj"
             },
-            "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrdersView.Persistence\\OrdersView.Persistence.csproj": {
-              "projectPath": "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrdersView.Persistence\\OrdersView.Persistence.csproj"
+            "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrderView.Persistence\\OrderView.Persistence.csproj": {
+              "projectPath": "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrderView.Persistence\\OrderView.Persistence.csproj"
             },
-            "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrdersView\\OrdersView.csproj": {
-              "projectPath": "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrdersView\\OrdersView.csproj"
+            "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrderView\\OrderView.csproj": {
+              "projectPath": "C:\\Users\\dell\\Desktop\\PizzaApp-Task-3\\PizzaAppTask3\\Data\\OrderView\\OrderView.csproj"
             }
           }
         }

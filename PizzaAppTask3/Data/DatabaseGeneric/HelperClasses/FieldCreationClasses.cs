@@ -28,8 +28,8 @@ namespace PizzaAppData.HelperClasses
 		public static EntityField2 Id { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSideFieldIndex.Id); }}
 		/// <summary>Creates a new PizzaSideEntity.Price field instance</summary>
 		public static EntityField2 Price { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSideFieldIndex.Price); }}
-		/// <summary>Creates a new PizzaSideEntity.Sides field instance</summary>
-		public static EntityField2 Sides { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSideFieldIndex.Sides); }}
+		/// <summary>Creates a new PizzaSideEntity.Type field instance</summary>
+		public static EntityField2 Type { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSideFieldIndex.Type); }}
 	}
 
 	/// <summary>Field Creation Class for entity PizzaSizeEntity</summary>
@@ -39,8 +39,8 @@ namespace PizzaAppData.HelperClasses
 		public static EntityField2 Id { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSizeFieldIndex.Id); }}
 		/// <summary>Creates a new PizzaSizeEntity.Price field instance</summary>
 		public static EntityField2 Price { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSizeFieldIndex.Price); }}
-		/// <summary>Creates a new PizzaSizeEntity.Sizes field instance</summary>
-		public static EntityField2 Sizes { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSizeFieldIndex.Sizes); }}
+		/// <summary>Creates a new PizzaSizeEntity.Type field instance</summary>
+		public static EntityField2 Type { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaSizeFieldIndex.Type); }}
 	}
 
 	/// <summary>Field Creation Class for entity PizzasListEntity</summary>
@@ -48,8 +48,8 @@ namespace PizzaAppData.HelperClasses
 	{
 		/// <summary>Creates a new PizzasListEntity.Id field instance</summary>
 		public static EntityField2 Id { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzasListFieldIndex.Id); }}
-		/// <summary>Creates a new PizzasListEntity.OrdersId field instance</summary>
-		public static EntityField2 OrdersId { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzasListFieldIndex.OrdersId); }}
+		/// <summary>Creates a new PizzasListEntity.OrderId field instance</summary>
+		public static EntityField2 OrderId { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzasListFieldIndex.OrderId); }}
 		/// <summary>Creates a new PizzasListEntity.PricePerPizza field instance</summary>
 		public static EntityField2 PricePerPizza { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzasListFieldIndex.PricePerPizza); }}
 		/// <summary>Creates a new PizzasListEntity.Side field instance</summary>
@@ -67,8 +67,8 @@ namespace PizzaAppData.HelperClasses
 		public static EntityField2 Id { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaToppingFieldIndex.Id); }}
 		/// <summary>Creates a new PizzaToppingEntity.Price field instance</summary>
 		public static EntityField2 Price { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaToppingFieldIndex.Price); }}
-		/// <summary>Creates a new PizzaToppingEntity.Toppings field instance</summary>
-		public static EntityField2 Toppings { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaToppingFieldIndex.Toppings); }}
+		/// <summary>Creates a new PizzaToppingEntity.Type field instance</summary>
+		public static EntityField2 Type { get { return ModelInfoProviderSingleton.GetInstance().CreateField2(PizzaToppingFieldIndex.Type); }}
 	}
 	
 

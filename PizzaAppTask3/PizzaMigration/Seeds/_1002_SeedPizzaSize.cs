@@ -21,12 +21,12 @@ namespace PizzaMigration.Seeds
 
         public override void Up()
         {
-            foreach(var size in PizzaSize)
+            foreach (var size in PizzaSize)
             {
                 Insert.IntoTable("pizza_sizes").Row(
                     new
                     {
-                        sizes = size.Type,
+                        type = size.Type,
                         price = size.Price
                     });
             }

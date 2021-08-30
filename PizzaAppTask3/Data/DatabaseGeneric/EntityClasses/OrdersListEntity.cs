@@ -48,7 +48,7 @@ namespace PizzaAppData.EntityClasses
 			public OrdersListEntityStaticMetaData()
 			{
 				SetEntityCoreInfo("OrdersListEntity", InheritanceHierarchyType.None, false, (int)PizzaAppData.EntityType.OrdersListEntity, typeof(OrdersListEntity), typeof(OrdersListEntityFactory), false);
-				AddNavigatorMetaData<OrdersListEntity, EntityCollection<PizzasListEntity>>("PizzasLists", a => a._pizzasLists, (a, b) => a._pizzasLists = b, a => a.PizzasLists, () => new OrdersListRelations().PizzasListEntityUsingOrdersId, typeof(PizzasListEntity), (int)PizzaAppData.EntityType.PizzasListEntity);
+				AddNavigatorMetaData<OrdersListEntity, EntityCollection<PizzasListEntity>>("PizzasLists", a => a._pizzasLists, (a, b) => a._pizzasLists = b, a => a.PizzasLists, () => new OrdersListRelations().PizzasListEntityUsingOrderId, typeof(PizzasListEntity), (int)PizzaAppData.EntityType.PizzasListEntity);
 			}
 		}
 
@@ -194,10 +194,10 @@ namespace PizzaAppData.RelationClasses
 	/// <summary>Implements the relations factory for the entity: OrdersList. </summary>
 	public partial class OrdersListRelations: RelationFactory
 	{
-		/// <summary>Returns a new IEntityRelation object, between OrdersListEntity and PizzasListEntity over the 1:n relation they have, using the relation between the fields: OrdersList.Id - PizzasList.OrdersId</summary>
-		public virtual IEntityRelation PizzasListEntityUsingOrdersId
+		/// <summary>Returns a new IEntityRelation object, between OrdersListEntity and PizzasListEntity over the 1:n relation they have, using the relation between the fields: OrdersList.Id - PizzasList.OrderId</summary>
+		public virtual IEntityRelation PizzasListEntityUsingOrderId
 		{
-			get { return ModelInfoProviderSingleton.GetInstance().CreateRelation(RelationType.OneToMany, "PizzasLists", true, new[] { OrdersListFields.Id, PizzasListFields.OrdersId }); }
+			get { return ModelInfoProviderSingleton.GetInstance().CreateRelation(RelationType.OneToMany, "PizzasLists", true, new[] { OrdersListFields.Id, PizzasListFields.OrderId }); }
 		}
 
 	}
@@ -205,7 +205,7 @@ namespace PizzaAppData.RelationClasses
 	/// <summary>Static class which is used for providing relationship instances which are re-used internally for syncing</summary>
 	internal static class StaticOrdersListRelations
 	{
-		internal static readonly IEntityRelation PizzasListEntityUsingOrdersIdStatic = new OrdersListRelations().PizzasListEntityUsingOrdersId;
+		internal static readonly IEntityRelation PizzasListEntityUsingOrderIdStatic = new OrdersListRelations().PizzasListEntityUsingOrderId;
 
 		/// <summary>CTor</summary>
 		static StaticOrdersListRelations() { }

@@ -16,7 +16,7 @@ namespace PizzaApp
                 table.AddColumn(new TableColumn(columnName).Centered());
             //--Rows
             foreach (var item in items)
-                table.AddRow(new Markup($"[bold Red]{item.Id}[/]"), new Markup($"[bold Red]{item.Type}[/]"), new Markup($"[bold Red] ${item.Price}[/]"));
+                table.AddRow(new Markup($"[bold Red]{item.Type}[/]"), new Markup($"[bold Red] ${item.Price}[/]"));
             AnsiConsole.Render(table);
         }
 

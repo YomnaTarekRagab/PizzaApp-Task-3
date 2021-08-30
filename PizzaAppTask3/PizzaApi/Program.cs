@@ -1,18 +1,10 @@
-using System.Collections.Generic;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Threading.Tasks;
 using PizzaApp;
-using System.Text.Json;
-using System;
 using System.Data;
-using System.Diagnostics;
-using PizzaAppData;
 using PizzaAppData.DatabaseSpecific;
-using OrdersView.DtoClasses;
-using OrdersView.Persistence;
 using PizzaAppData.Linq;
 using Npgsql;
 using SD.LLBLGen.Pro.DQE.PostgreSql;
@@ -20,7 +12,6 @@ using SD.LLBLGen.Pro.ORMSupportClasses;
 using SD.LLBLGen.Pro.LinqSupportClasses;
 using System.Linq;
 using PizzaAppData.EntityClasses;
-
 
 var app = WebApplication.Create();
 if (app.Environment.IsDevelopment())
@@ -40,9 +31,9 @@ app.MapGet("/components", async () =>
         var sides = await metaData.PizzaSide.ToListAsync();
         return new
         {
-            Toppings = toppings.Select(x => new { x.Id, x.Toppings, x.Price }),
-            Sizes = sizes.Select(x => new { x.Id, x.Sizes, x.Price }),
-            Sides = sides.Select(x => new { x.Id, x.Sides, x.Price })
+            Toppings = toppings.Select(x => new { x.Id, x.Type, x.Price }),
+            Sizes = sizes.Select(x => new { x.Id, x.Type, x.Price }),
+            Sides = sides.Select(x => new { x.Id, x.Type, x.Price })
         };
     }
 });
@@ -53,49 +44,28 @@ app.MapPost("/createPizza", async([FromBody] Order receivedOrder) =>
     {
         var metaData = new LinqMetaData(adapter);
         adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
-        var totalPrice = receivedOrder.TotalPrice;
         OrdersListEntity orderRow = new OrdersListEntity();
         orderRow.Id = receivedOrder.UserId;
         var orderId = orderRow.Id;
         orderRow.NumberOfPizzas = receivedOrder.NumOfPizzas;
-        orderRow.TotalPrice = totalPrice;
+        orderRow.TotalPrice = receivedOrder.OrderPrice();
         await adapter.SaveEntityAsync(orderRow, true);
         adapter.Commit();
         adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
         foreach (var pizza in receivedOrder.ListOfPizzas)
         {
-            
             PizzasListEntity pizzaRow = new PizzasListEntity();
-            int pizzaId = pizzaRow.Id;
             pizzaRow.Topping = pizza.Topping.Type;
             pizzaRow.Size = pizza.Size.Type;
-            pizzaRow.OrdersId = orderId;
+            pizzaRow.OrderId = orderId;
             pizzaRow.Side = pizza.Side.Type;
             pizzaRow.PricePerPizza = pizza.CalculatePrice();
             await adapter.SaveEntityAsync(pizzaRow, true);
+            adapter.Commit();
         }
-
-        adapter.Commit();
-
     }
-        
-        //string path = Path.Combine(Directory.GetCurrentDirectory(), "Files/orders.json");
-        //var options = new JsonSerializerOptions
-        //{
-        //WriteIndented = true,
-        //IncludeFields = true
-        //};
-        //var orderJson = System.Text.Json.JsonSerializer.Serialize(receivedOrder, options);
-        //await File.AppendAllTextAsync(path, orderJson);
-        return new OkObjectResult(receivedOrder);
+    return new OkObjectResult(receivedOrder);
 });
-
-//static async Task<string> ReadOrdersList(string fileName)
-//{
-//    string path = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-//    string jsonString = await File.ReadAllTextAsync(path);
-//    return jsonString;
-//}
 
 await app.RunAsync();
 

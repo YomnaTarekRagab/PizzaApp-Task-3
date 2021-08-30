@@ -4,10 +4,6 @@ using System.Collections.Generic;
 
 namespace PizzaMigration
 {
-    public static class PostgresSpecificType
-    {
-        
-    }
     public static class Common
     {
         public static ICreateTableColumnOptionOrWithColumnSyntax
@@ -39,15 +35,5 @@ namespace PizzaMigration
                 .AsDouble()
                 .NotNullable();
         }
-
-        //public static ICreateTableColumnOptionOrWithColumnSyntax
-        //   WithTimeStampsColumn(this ICreateTableWithColumnSyntax tableWithColumnSyntax)
-        //{
-        //    return tableWithColumnSyntax
-        //        .WithColumn("created_at")
-        //        .AsDateTime()
-        //        .NotNullable();
-        //}
-
     }
 }
