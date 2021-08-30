@@ -22,7 +22,7 @@ namespace PizzaMigration
                 {
                     if (upOrDown.Equals("--up"))
                     {
-                        Console.WriteLine("updating the database");
+                        Console.WriteLine("Updating the database");
                         UpdateDatabase(scope.ServiceProvider);
                     }
 
