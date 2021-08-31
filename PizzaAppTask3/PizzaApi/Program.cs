@@ -41,7 +41,6 @@ app.MapPost("/createPizza", async([FromBody] Order receivedOrder) =>
 {
     using (DataAccessAdapter adapter = new DataAccessAdapter())
     {
-        var metaData = new LinqMetaData(adapter);
         adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
         OrdersListEntity orderRow = new OrdersListEntity();
         orderRow.Id = receivedOrder.UserId;
