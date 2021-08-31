@@ -22,45 +22,41 @@ LLBLGen();
 
 app.MapGet("/components", async () =>
 {
-    using (DataAccessAdapter adapter = new DataAccessAdapter())
+    using var adapter = new DataAccessAdapter();
+    var metaData = new LinqMetaData(adapter);
+    var toppings = await metaData.PizzaTopping.ToListAsync();
+    var sizes = await metaData.PizzaSize.ToListAsync();
+    var sides = await metaData.PizzaSide.ToListAsync();
+    return new
     {
-        var metaData = new LinqMetaData(adapter);
-        var toppings = await metaData.PizzaTopping.ToListAsync();
-        var sizes = await metaData.PizzaSize.ToListAsync();
-        var sides = await metaData.PizzaSide.ToListAsync();
-        return new
-        {
-            Toppings = toppings.Select(x => new { x.Id, x.Type, x.Price }),
-            Sizes = sizes.Select(x => new { x.Id, x.Type, x.Price }),
-            Sides = sides.Select(x => new { x.Id, x.Type, x.Price })
-        };
-    }
+        Toppings = toppings.Select(x => new { x.Id, x.Type, x.Price }),
+        Sizes = sizes.Select(x => new { x.Id, x.Type, x.Price }),
+        Sides = sides.Select(x => new { x.Id, x.Type, x.Price })
+    };
 });
 
 app.MapPost("/createPizza", async([FromBody] Order receivedOrder) =>
 {
-    using (DataAccessAdapter adapter = new DataAccessAdapter())
+    using var adapter = new DataAccessAdapter();
+    adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
+    OrdersListEntity orderRow = new OrdersListEntity();
+    orderRow.Id = receivedOrder.UserId;
+    var orderId = orderRow.Id;
+    orderRow.NumberOfPizzas = receivedOrder.NumOfPizzas;
+    orderRow.TotalPrice = receivedOrder.OrderPrice();
+    await adapter.SaveEntityAsync(orderRow, true);
+    adapter.Commit();
+    adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
+    foreach (var pizza in receivedOrder.ListOfPizzas)
     {
-        adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
-        OrdersListEntity orderRow = new OrdersListEntity();
-        orderRow.Id = receivedOrder.UserId;
-        var orderId = orderRow.Id;
-        orderRow.NumberOfPizzas = receivedOrder.NumOfPizzas;
-        orderRow.TotalPrice = receivedOrder.OrderPrice();
-        await adapter.SaveEntityAsync(orderRow, true);
+        PizzasListEntity pizzaRow = new PizzasListEntity();
+        pizzaRow.Topping = pizza.Topping.Type;
+        pizzaRow.Size = pizza.Size.Type;
+        pizzaRow.OrderId = orderId;
+        pizzaRow.Side = pizza.Side.Type;
+        pizzaRow.PricePerPizza = pizza.CalculatePrice();
+        await adapter.SaveEntityAsync(pizzaRow, true);
         adapter.Commit();
-        adapter.StartTransaction(IsolationLevel.ReadCommitted, "MultiEntityInsertion");
-        foreach (var pizza in receivedOrder.ListOfPizzas)
-        {
-            PizzasListEntity pizzaRow = new PizzasListEntity();
-            pizzaRow.Topping = pizza.Topping.Type;
-            pizzaRow.Size = pizza.Size.Type;
-            pizzaRow.OrderId = orderId;
-            pizzaRow.Side = pizza.Side.Type;
-            pizzaRow.PricePerPizza = pizza.CalculatePrice();
-            await adapter.SaveEntityAsync(pizzaRow, true);
-            adapter.Commit();
-        }
     }
     return new OkObjectResult(receivedOrder);
 });
